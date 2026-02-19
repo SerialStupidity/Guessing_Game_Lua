@@ -12,12 +12,12 @@ while play ~=0 do
     attempts = 0
 
     --while loop to continue until player guesses the number or uses all attempts
-    while attemps < 7 or guess == randomNumber do
+    while attempts <= 7 and guess ~= randomNumber do
         --ask player for guess
-        print("Guess a number between 1 and 100, you have".. 7 - attempts.. "left: ")
+        print("Guess a number between 1 and 100, you have".. 7 - attempts.. " attempts left: ")
         guess = tonumber(io.read())
-        while guess == nil do--data validation loop
-            print("not a number, try again: ")
+        while guess == nil do
+            print("Not a number, try again")
             guess = tonumber(io.read())
         end
 
@@ -33,7 +33,7 @@ while play ~=0 do
     end
     --message if player wins
     if guess == randomNumber then
-    print("You guessed the number in " .. attempts .. " attempts!")
+        print("You guessed the number in " .. attempts .. " attempts!")
     break
     --message if player loses 
     else
@@ -42,7 +42,7 @@ while play ~=0 do
     --ask player if they want to play again
     print("press 1 to play again or 0 to quit: ")
     play = tonumber(io.read())
-    while play == nil do
+    while play == nil do--data validation loop
         print("not a number, try again: ")
         play = tonumber(io.read())
     end
